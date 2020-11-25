@@ -9,6 +9,7 @@ import TutorialsList from "./components/TutorialsList";
 import RestaurantList from "./components/RestaurantList";
 import Restaurant from "./components/Restaurant";
 import VisitedRest from "./components/VisitedRest";
+import newCard from "./components/CardComponent";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
               Been There!
             </Link>
           </li>
+       
         </div>
       </nav>
       {/* <Users> </Users> */} 

@@ -111,6 +111,7 @@ public class RestaurantServiceImpl implements RestaurantService {
                                                                    @RequestParam(defaultValue = "0") int page,
                                                                    @RequestParam(defaultValue = "4") int size){
             try {
+                System.out.println("AAA");
                 List<Restaurant> restaurants= new ArrayList<Restaurant>();
                 Pageable paging = PageRequest.of(page, size);
                 Page<Restaurant> pageRestaurants;
