@@ -17,9 +17,7 @@ function * fetchRestaurantsTypes(action){
     try{
 
         const types= yield call(getRestaurantsTypes);
-        console.log(types);
-        
-        yield put({ type: "GET_RESTAURANTSTYPES_SUCCESS", types: types});
+         yield put({ type: "GET_RESTAURANTSTYPES_SUCCESS", types: types});
     
       
     }

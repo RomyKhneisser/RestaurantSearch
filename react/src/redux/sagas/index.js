@@ -8,9 +8,6 @@ export default function* rootSaga(){
         restaurantSaga(),
         restaurantsTypesSaga(),
         visitedRestSaga(),
- 
-
-
     ])
 }
 

@@ -16,6 +16,7 @@ public class Restaurant {
     private float cost;
     private String address;
     private Integer phonenumber;
+    private String imageUrl;
 
     @OneToMany(targetEntity = VisitedRest.class,cascade = CascadeType.ALL,mappedBy = "restaurant")
     private List<VisitedRest> visitedRest;
@@ -34,6 +35,14 @@ public class Restaurant {
 
     public Integer getId() {
         return id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public void setId(Integer id) {

@@ -1,9 +1,7 @@
 package com.example.JavaFullStack.Controller;
-
 import com.example.JavaFullStack.Model.VisitedRest;
 import com.example.JavaFullStack.Service.VisitedRestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +31,7 @@ public class VisitedRestController {
     }
 
     @DeleteMapping("/visitedrests/{id}")
-    public ResponseEntity<HttpStatus> deleteVisitedRest(@PathVariable("id") Integer idRestaurant) {
+    public ResponseEntity<Integer> deleteVisitedRest(@PathVariable("id") Integer idRestaurant) {
       return visitedRestService.deleteVisitedRest(idRestaurant);
     }
 }

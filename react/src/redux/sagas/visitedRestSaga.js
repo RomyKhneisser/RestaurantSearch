@@ -9,7 +9,7 @@ function getVisitedRestaurantsApi(){
             'Content-Type': 'application/json',
         }
     }).then(response => response.json())
-    .catch((e)=> {throw "hai"})
+    .catch((e)=> {throw "Error.."})
 }
 
 function * fetchVisitedRestaurants(action){
@@ -33,7 +33,7 @@ function postVisitedRestaurantsApi(idRestaurant){
             'Content-Type': 'application/json',
         }
     }).then(response => response.json())
-    .catch((e)=> {throw "hai"})
+    .catch((e)=> {throw "Error.."})
 }
 
 function * storeVisitedRestaurants(action){
@@ -56,19 +56,15 @@ function deletetVisitedRestaurantsApi(idRestaurant){
             'Content-Type': 'application/json',
         }
     }).then(response => response.json())
-    .catch((e)=> {throw "hai"})
+    .catch((e)=> {throw "Error.."})
 }
 
 function * removeVisitedRestaurants(action){
     try{
-        console.log("sssAAAA");
         yield call(deletetVisitedRestaurantsApi,action.idRestaurant);
         yield put({ type: "DELETE_VISITEDRESTAURANTS_SUCCESS"});
-    
-      
     }
     catch(e){
-        console.log("QQQQQQsssAAAA");
         yield put({type:'DELETE_VISITEDRESTAURANTS_FAILED', message:e.message});
     }
 }

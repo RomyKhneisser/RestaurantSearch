@@ -1,7 +1,8 @@
 package com.example.JavaFullStack.Model;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -9,6 +10,8 @@ public class VisitedRest {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @JsonFormat(pattern="MMMMM dd, yyyy",timezone="GMT+2")
     private Date date;
 
     @ManyToOne
@@ -23,7 +26,6 @@ public class VisitedRest {
         this.date = new Date();
     }
 
-
     public Integer getId() {
         return id;
     }
@@ -32,17 +34,16 @@ public class VisitedRest {
         this.id = id;
     }
 
-
-
     public Date getDate() {
         return date;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.date =date;
     }
 
     public Restaurant getRestaurant() {
+
         return restaurant;
     }
 

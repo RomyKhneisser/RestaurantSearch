@@ -16,7 +16,6 @@ function * fetchRestaurants(action){
     try{
 
         const restaurants= yield call(getApi,action.action);
-        console.log(action.action);
         yield put({ type: "GET_RESTAURANTS_SUCCESS", restaurants: restaurants});
     
       

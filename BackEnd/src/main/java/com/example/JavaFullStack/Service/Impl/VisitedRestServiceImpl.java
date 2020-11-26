@@ -1,5 +1,4 @@
 package com.example.JavaFullStack.Service.Impl;
-
 import com.example.JavaFullStack.Model.Restaurant;
 import com.example.JavaFullStack.Model.VisitedRest;
 import com.example.JavaFullStack.Repository.RestaurantRepository;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 
 @Service
@@ -45,25 +43,16 @@ public class VisitedRestServiceImpl implements VisitedRestService {
     @Override
     public List<VisitedRest> getAllVisitedRestaurants() {
         try {
-            List<VisitedRest>v=visitedRestRepository.getAllVisitedRest();
-//            System.out.println(v.get(0));
-//            String pattern = "MMMMM dd,yyyy";
-//            SimpleDateFormat simpleDateFormat =new SimpleDateFormat(pattern);
-//            String date = simpleDateFormat.format(v.get(1).getDate());
-//            System.out.println(date);
-//            System.out.println(new Date());
-           return  v;
-
+            return visitedRestRepository.getAllVisitedRest();
         } catch (Exception e) {
             return null;
         }
     }
 
-
-    public ResponseEntity<HttpStatus> deleteVisitedRest(Integer idRestaurant) {
+    public ResponseEntity<Integer> deleteVisitedRest(Integer idRestaurant) {
         try {
            Integer i= visitedRestRepository.deleteByRestaurantId(idRestaurant);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(i,HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

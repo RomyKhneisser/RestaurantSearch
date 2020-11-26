@@ -3,41 +3,45 @@ import * as type from "../types";
 const intialState = {
     visitedRestaurants : [],
     loading: false,
-  error: false,
-
+    error: false,
+    message:"",
 }
 
 export default function restaurants (state = intialState, action){
     switch(action.type){
         case type.GET_VISITEDRESTAURANTS_REQUESTED:
             return{
-                ...state,
-                loading: true,
-                visitedRestaurants : action.visitedRestaurants ,
-             error: false,
+                    ...state,
+                    loading: true,
+                    visitedRestaurants : action.visitedRestaurants ,
+                    error: false,
+                    message:"",
 
-            }
+                }
             case type.GET_VISITEDRESTAURANTS_SUCCESS:
                 return{
-                ...state,
-                loading: false,
-                visitedRestaurants : action.visitedRestaurants ,
-                error: false,
+                    ...state,
+                    loading: false,
+                    visitedRestaurants : action.visitedRestaurants ,
+                    error: false,
+                    message:"",
 
-            }
+                }
             case type.GET_VISITEDRESTAURANTS_FAILED:
                 return{
-                ...state,
-                loading: false,
-                error: true,
+                    ...state,
+                    loading: false,
+                    error: true,
+                    message:action.message,
 
-            }
+                }
             case type.POST_VISITEDRESTAURANTS_REQUESTED:
                 return{
                     ...state,
                     loading: true,
                     visitedRestaurants : action.visitedRestaurants ,
                     error: false,
+                    message:"",
     
                 }
             case type.POST_VISITEDRESTAURANTS_SUCCESS:
@@ -46,6 +50,7 @@ export default function restaurants (state = intialState, action){
                     loading: false,
                     visitedRestaurants : action.visitedRestaurants ,
                     error: false,
+                    message:"",
     
                 }
             case type.POST_VISITEDRESTAURANTS_FAILED:
@@ -53,6 +58,7 @@ export default function restaurants (state = intialState, action){
                     ...state,
                     loading: false,
                     error: true,
+                    message:action.message,
     
                 }
             case type.POST_VISITEDRESTAURANTS_REQUESTED:
@@ -61,6 +67,7 @@ export default function restaurants (state = intialState, action){
                     loading: true,
                     visitedRestaurants : action.visitedRestaurants ,
                     error: false,
+                    message:"",
     
                 }
             case type.POST_VISITEDRESTAURANTS_SUCCESS:
@@ -69,6 +76,7 @@ export default function restaurants (state = intialState, action){
                     loading: false,
                     visitedRestaurants : action.visitedRestaurants ,
                     error: false,
+                    message:"",
     
                 }
             case type.POST_VISITEDRESTAURANTS_FAILED:
@@ -76,28 +84,32 @@ export default function restaurants (state = intialState, action){
                     ...state,
                     loading: false,
                     error: true,
+                    message:action.message,
     
                 }
       
             case type.DELETE_VISITEDRESTAURANTS_REQUESTED:
             return{
-                        ...state,
-                        loading: true,
-                     error: false,
+                    ...state,
+                    loading: true,
+                    error: false,
+                    message:"",
         
-                    }
+                }
             case type.DELETE_VISITEDRESTAURANTS_SUCCESS:
                 return{
-                        ...state,
-                        loading: false,
-                        error: false,
-                    }
+                    ...state,
+                    loading: false,
+                    error: false,
+                    message:"",
+                }
             case type.DELETE_VISITEDRESTAURANTS_FAILED:
                 return{
-                        ...state,
-                        loading: false,
-                        error: true,
-                    }    
+                    ...state,
+                    loading: false,
+                    error: true,
+                    message:action.message,
+                }    
             default: 
                 return state;
     }
