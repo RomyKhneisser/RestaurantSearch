@@ -11,8 +11,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.*;
+
+// A user may visit a restaurant twice a day, therefore the state of checkboxes are reset every time the page is loaded
+// in order to check them again
+// Otherwise, when fetching the restaurants a bool could also be passed in the response body indicating if the user
+// visited that restaurant today or not
+
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
@@ -29,15 +34,11 @@ public class RestaurantServiceImpl implements RestaurantService {
         try {
             List<Restaurant> restaurants= new ArrayList<Restaurant>();
             Pageable paging = PageRequest.of(page, size);
-            System.out.println(page);
-
             Page<Restaurant> pageRestaurants;
             if (name == null)
                 pageRestaurants = restaurantRepository.findAll(paging);
             else
                 pageRestaurants = restaurantRepository.findByNameContainingIgnoreCase(name,paging);
-
-
             restaurants = pageRestaurants.getContent();
 
             Map<String, Object> response = new HashMap<>();

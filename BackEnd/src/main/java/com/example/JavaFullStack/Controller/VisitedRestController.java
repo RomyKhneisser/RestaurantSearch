@@ -1,5 +1,4 @@
 package com.example.JavaFullStack.Controller;
-
 import com.example.JavaFullStack.Model.VisitedRest;
 import com.example.JavaFullStack.Service.VisitedRestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,8 @@ public class VisitedRestController {
     VisitedRestService visitedRestService;
 
     @GetMapping("/visitedrests")
-    public ResponseEntity<List<VisitedRest>> getAllVisitedRests() {
-        return visitedRestService.getAllVisitedRests();
+    public List<VisitedRest>getAllVisitedRests() {
+        return visitedRestService.getAllVisitedRestaurants();
     }
 
     @GetMapping("/visitedrests/{id}")
@@ -26,8 +25,13 @@ public class VisitedRestController {
         return visitedRestService.getVisitedRestsById(id);
     }
 
-    @PostMapping("/visitedrests")
-    public ResponseEntity<VisitedRest> createVisitedRest(@RequestBody VisitedRest visitedRest) {
-        return visitedRestService.createVisitedRest(visitedRest);
+    @PostMapping("/visitedrests/{id}")
+    public ResponseEntity<VisitedRest> createVisitedRest(@PathVariable("id") Integer idRestaurant) {
+        return visitedRestService.createVisitedRest(idRestaurant);
+    }
+
+    @DeleteMapping("/visitedrests/{id}")
+    public ResponseEntity<Integer> deleteVisitedRest(@PathVariable("id") Integer idRestaurant) {
+      return visitedRestService.deleteVisitedRest(idRestaurant);
     }
 }

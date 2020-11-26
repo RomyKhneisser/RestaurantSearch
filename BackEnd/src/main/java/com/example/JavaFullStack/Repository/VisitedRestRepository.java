@@ -2,10 +2,15 @@ package com.example.JavaFullStack.Repository;
 
 
 import com.example.JavaFullStack.Model.VisitedRest;
-import com.example.JavaFullStack.Model.VisitedRestDto;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 public interface VisitedRestRepository extends JpaRepository<VisitedRest, Integer> {
-//    @Query(value="select visited_rest.id,name,date from visited_rest,restaurant where restaurant.id=visited_rest.id_restaurant;",nativeQuery = true)
-//    public List<VisitedRestDto> getAllVisitedRest();
+    @Query("select v from Restaurant r Join VisitedRest v on r.id=v.restaurant.id")
+    public List<VisitedRest> getAllVisitedRest();
+
+    @Query(value="delete  from visited_rest where id in (select id from visited_rest where id_restaurant=:idRestaurant and date=CURRENT_DATE Limit 1) returning id",nativeQuery = true)
+    public Integer deleteByRestaurantId(Integer idRestaurant);
 }

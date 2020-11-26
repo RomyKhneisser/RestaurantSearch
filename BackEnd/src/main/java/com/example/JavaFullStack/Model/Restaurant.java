@@ -1,6 +1,9 @@
 package com.example.JavaFullStack.Model;
 
+import javassist.bytecode.ByteArray;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Restaurant {
@@ -13,6 +16,11 @@ public class Restaurant {
     private float cost;
     private String address;
     private Integer phonenumber;
+    private String imageUrl;
+
+    @OneToMany(targetEntity = VisitedRest.class,cascade = CascadeType.ALL,mappedBy = "restaurant")
+    private List<VisitedRest> visitedRest;
+
 
     public Restaurant() { }
 
@@ -22,10 +30,19 @@ public class Restaurant {
         this.cost = cost;
         this.address = address;
         this.phonenumber = phonenumber;
+
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public void setId(Integer id) {
@@ -71,6 +88,8 @@ public class Restaurant {
     public void setPhonenumber(Integer phonenumber) {
         this.phonenumber = phonenumber;
     }
+
+
 
     @Override
     public String toString() {

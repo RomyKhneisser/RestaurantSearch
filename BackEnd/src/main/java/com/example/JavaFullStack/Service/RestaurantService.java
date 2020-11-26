@@ -15,10 +15,7 @@ public interface RestaurantService {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "4") int size
     );
-   //public ResponseEntity<List<Restaurant>> getAllrestaurants();
     public ResponseEntity<Restaurant> getRestaurantsById(@PathVariable("id") Integer id);
-   // public ResponseEntity<List<Restaurant>> getRestaurantsByName(@RequestParam String name);
-
 
     public ResponseEntity<Map<String, Object>>getRestaurantsByType(@RequestParam String type,
                                                                    @RequestParam(defaultValue = "0") int page,
