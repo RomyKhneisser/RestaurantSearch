@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 
 import java.util.Date;
+//idperson column should be added if many users will be using the app
 
 @Entity
 public class VisitedRest {
